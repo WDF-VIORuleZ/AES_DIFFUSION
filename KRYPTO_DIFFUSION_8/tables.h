@@ -95,6 +95,9 @@ namespace t
 		int _higher_int = _higher.to_ulong() & INT_MAX;
 		int _lower_int = _lower.to_ulong() & INT_MAX;
 
+		printf_s("HIGHER: %s  - LOWER: %s \n", _higher.to_string(), _lower.to_string());
+		printf_s("HIGHER: %#2x  - LOWER: %#2x \n", _higher_int, _lower_int);
+
 		// Higher = X, Lower = Y
 		return AES_S[int((_higher_int * 16) + (_lower_int))];
 	}

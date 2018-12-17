@@ -54,9 +54,9 @@ namespace AES
 
 	// src = [Bi1, Bi2, Bi3, Bi4]
 	// rtn = [C0, C1, C2, C3], size = 4
-	int8_t* mix_column(int8_t src[4])
+	void mix_column(int8_t src[4], int8_t *dest[4])
 	{
-		int8_t rtn[4], fix_matrix[4][4]=
+		int8_t fix_matrix[4][4]=
 		{
 			{0x02, 0x03, 0x01, 0x01},
 			{0x01, 0x02, 0x03, 0x01},
@@ -69,9 +69,8 @@ namespace AES
 			int8_t ret_val_i = 0;
 			for (int j = 0; j < 4; j++)
 				ret_val_i += fix_matrix[i][j] * (src[j]);
-			rtn[i] = ret_val_i;
+			*dest[i] = ret_val_i;
 		}
-		return rtn;
 	}
 
 	void key_addition()
